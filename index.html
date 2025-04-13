@@ -8,10 +8,14 @@
     body {
       font-family: Arial, sans-serif;
       padding: 2rem;
-      background-color: #121212;
-      color: #f0f0f0;
+      background-color: #121212; /* Чёрный фон */
+      color: #f0f0f0; /* Белый текст */
       margin: 0;
-      height: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       transition: opacity 1s ease-in;
     }
 
@@ -22,7 +26,7 @@
     header {
       text-align: center;
       margin-bottom: 2rem;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный чёрный фон */
       border-radius: 15px;
       padding: 20px;
     }
@@ -37,36 +41,36 @@
       font-size: 1.2rem;
       margin-top: 0;
       font-style: italic;
-      color: #bbb;
+      color: #bbb; /* Тёмно-серый для подзаголовка */
     }
 
     header img {
       max-width: 150px;
       border-radius: 50%;
       margin-top: 10px;
-      border: 4px solid #fff;
+      border: 4px solid #fff; /* Белая рамка вокруг изображения */
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1); /* Мутный белый фон */
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      max-width: 600px;
-      margin: 20px auto;
+      max-width: 300px;
+      margin: 20px;
       text-align: center;
-      color: #ccc;
+      color: #ccc; /* Серый цвет для текста в карточках */
     }
 
     .card h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
-      color: #fff;
+      color: #fff; /* Белый для заголовков */
     }
 
     .card p {
       font-size: 1.2rem;
-      color: #aaa;
+      color: #aaa; /* Светло-серый цвет текста */
     }
 
     a {
@@ -77,10 +81,11 @@
     }
 
     a:hover {
-      color: #ccc;
+      color: #ccc; /* Светлый серый для ховера */
       text-decoration: underline;
     }
 
+    /* Сетка для модеров */
     .moders-container {
       display: flex;
       justify-content: center;
@@ -89,40 +94,29 @@
       flex-wrap: wrap;
     }
 
+    /* Стиль для изображений */
     .moders-container img {
       width: 100%;
       border-radius: 12px;
       margin-top: 10px;
     }
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .image-row img {
-      width: 200px;
-      border-radius: 12px;
-      object-fit: cover;
-    }
   </style>
 </head>
 <body class="loaded">
   <header>
     <h1>ech0noway</h1>
     <p>(главный мопс на планете)</p>
+    <img src="ech010.jpg" alt="Моё фото">
     <p>Всем привет тут будет вся информация про ech0noway и его модеров</p>
   </header>
 
   <div class="card">
     <h2>ech0noway</h2>
     <p>БРАТ СКАЯ?:)</p>
-    <div class="image-row">
-      <img src="photo1.jpg" alt="sky">
-      <img src="ech010.jpg" alt="ech0">
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+      <img src="photo1.jpg" alt="sky" style="width: 200px; border-radius: 12px;">
+      <img src="ech010.jpg" alt="ech0" style="width: 200px; border-radius: 12px;">
     </div>
     <a href="https://twitch.tv/ech0noway">Перейти на канал</a>
   </div>
@@ -140,4 +134,3 @@
   </div>
 </body>
 </html>
-
