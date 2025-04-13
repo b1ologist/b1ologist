@@ -80,17 +80,19 @@
     }
 
     .image-row {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+}
 
-    .image-row img {
-      width: 200px;
-      border-radius: 12px;
-    }
+.image-row img {
+  width: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+}
 
     .moders-container {
       display: flex;
