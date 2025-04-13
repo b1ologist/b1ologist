@@ -51,12 +51,44 @@
       border-radius: 10px;
       transition: transform 0.3s ease, filter 0.3s ease;
       image-rendering: auto;
+      cursor: pointer;
     }
 
     .image-gallery img:hover {
       transform: scale(1.05);
       filter: brightness(1.1);
     }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
@@ -65,9 +97,9 @@
     <h1>ech0noway</h1>
     <p>первая встреча ech0noway и skywhywalkera</p>
     <div class="image-gallery">
-      <img src="photo9.png" alt="photo9">
-      <img src="photo8.png" alt="photo8">
-      <img src="photo10.png" alt="photo10">
+      <img src="photo9.png" alt="photo9" onclick="openModal('photo9.png')">
+      <img src="photo8.png" alt="photo8" onclick="openModal('photo8.png')">
+      <img src="photo10.png" alt="photo10" onclick="openModal('photo10.png')">
     </div>
   </div>
 
@@ -80,14 +112,36 @@
       <li>Обожает своих модеров (и периодически шутит над ними).</li>
     </ul>
     <div class="image-gallery" style="margin-top: 20px;">
-      <img src="photo2.png" alt="photo2">
-      <img src="photo3.png" alt="photo3">
-      <img src="photo4.png" alt="photo4">
-      <img src="photo5.png" alt="photo5">
-      <img src="photo6.png" alt="photo6">
-      <img src="photo7.png" alt="photo7">
+      <img src="photo2.png" alt="photo2" onclick="openModal('photo2.png')">
+      <img src="photo3.png" alt="photo3" onclick="openModal('photo3.png')">
+      <img src="photo4.png" alt="photo4" onclick="openModal('photo4.png')">
+      <img src="photo5.png" alt="photo5" onclick="openModal('photo5.png')">
+      <img src="photo6.png" alt="photo6" onclick="openModal('photo6.png')">
+      <img src="photo7.png" alt="photo7" onclick="openModal('photo7.png')">
     </div>
   </div>
+
+  <!-- Модальное окно -->
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    // Открыть модальное окно с изображением
+    function openModal(imageSrc) {
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modalImage');
+      modal.style.display = "flex";
+      modalImage.src = imageSrc;
+    }
+
+    // Закрыть модальное окно
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
