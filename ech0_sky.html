@@ -1,3 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ech0noway</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 800px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .card h1, .card h2 {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      color: #bbb;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .image-gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      image-rendering: auto;
+      cursor: pointer;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>ech0noway</h1>
+    <p>первая встреча ech0noway и skywhywalkera</p>
+    <div class="image-gallery">
+      <img src="photo9.png" alt="photo9" onclick="openModal('photo9.png')">
+      <img src="photo8.png" alt="photo8" onclick="openModal('photo8.png')">
+      <img src="photo10.png" alt="photo10" onclick="openModal('photo10.png')">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Несколько фактов про ech0noway</h2>
+    <ul style="text-align: left; max-width: 600px; margin: 0 auto; font-size: 1rem; color: #ccc;">
+      <li>Может не говорить — но вы всё поймёте.</li>
+      <li>В его чате всегда порядок (или почти всегда).</li>
+      <li>Имеет врождённый навык молниеносного тайминга.</li>
+      <li>Обожает своих модеров (и периодически шутит над ними).</li>
+    </ul>
+    <div class="image-gallery" style="margin-top: 20px;">
+      <img src="photo2.png" alt="photo2" onclick="openModal('photo2.png')">
+      <img src="photo3.png" alt="photo3" onclick="openModal('photo3.png')">
+      <img src="photo4.png" alt="photo4" onclick="openModal('photo4.png')">
+      <img src="photo5.png" alt="photo5" onclick="openModal('photo5.png')">
+      <img src="photo6.png" alt="photo6" onclick="openModal('photo6.png')">
+      <img src="photo7.png" alt="photo7" onclick="openModal('photo7.png')">
+    </div>
+  </div>
+
+  <!-- Модальное окно -->
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    // Открыть модальное окно с изображением
+    function openModal(imageSrc) {
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modalImage');
+      modal.style.display = "flex";
+      modalImage.src = imageSrc;
+    }
+
+    // Закрыть модальное окно
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
 <!-- Клип-карточка слева -->
 <div class="card" style="align-self: flex-start;">
   <h2>Клипы (неделя)</h2>
