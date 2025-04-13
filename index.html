@@ -11,11 +11,6 @@ body {
   background-color: #121212;
   color: #f0f0f0;
   margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   transition: opacity 1s ease-in;
 }
     body.loaded {
@@ -25,7 +20,7 @@ body {
     header {
       text-align: center;
       margin-bottom: 2rem;
-      background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный чёрный фон */
+      background-color: rgba(0, 0, 0, 0.8);
       border-radius: 15px;
       padding: 20px;
     }
@@ -40,36 +35,29 @@ body {
       font-size: 1.2rem;
       margin-top: 0;
       font-style: italic;
-      color: #bbb; /* Тёмно-серый для подзаголовка */
-    }
-
-    header img {
-      max-width: 150px;
-      border-radius: 50%;
-      margin-top: 10px;
-      border: 4px solid #fff; /* Белая рамка вокруг изображения */
+      color: #bbb;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.1); /* Мутный белый фон */
+      background: rgba(255, 255, 255, 0.1);
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       max-width: 300px;
       margin: 20px;
       text-align: center;
-      color: #ccc; /* Серый цвет для текста в карточках */
+      color: #ccc;
     }
 
     .card h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
-      color: #fff; /* Белый для заголовков */
+      color: #fff;
     }
 
     .card p {
       font-size: 1.2rem;
-      color: #aaa; /* Светло-серый цвет текста */
+      color: #aaa;
     }
 
     a {
@@ -80,11 +68,10 @@ body {
     }
 
     a:hover {
-      color: #ccc; /* Светлый серый для ховера */
+      color: #ccc;
       text-decoration: underline;
     }
 
-    /* Сетка для модеров */
     .moders-container {
       display: flex;
       justify-content: center;
@@ -93,21 +80,18 @@ body {
       flex-wrap: wrap;
     }
 
-    /* Стиль для изображений */
     .moders-container img {
       width: 100%;
       border-radius: 12px;
       margin-top: 10px;
     }
-
   </style>
 </head>
 <body class="loaded">
   <header>
     <h1>ech0noway</h1>
     <p>(главный мопс на планете)</p>
-    <img src="ech010.jpg" alt="Моё фото">
-    <p>Всем привет тут будет вся информация про ech0noway и его модеров</p>
+    <p>Всем привет, тут будет вся информация про ech0noway и его модеров</p>
   </header>
 
   <div class="card">
@@ -115,7 +99,7 @@ body {
     <p>БРАТ СКАЯ?:)</p>
     <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
       <img src="photo1.jpg" alt="sky" style="width: 200px; border-radius: 12px;">
-      <img src="ech010.jpg" alt="ech0" style="width: 200px; border-radius: 12px;">
+      <!-- Удалено: <img src="ech010.jpg"... -->
     </div>
     <a href="https://twitch.tv/ech0noway">Перейти на канал</a>
   </div>
@@ -123,13 +107,14 @@ body {
   <div class="moders-container">
     <div class="card" style="width: 250px;">
       <h2>d3stroyeed</h2>
-      <p>Банит быстрее, чем ты моргнёшь(ну тут хз)</p>
+      <p>Банит быстрее, чем ты моргнёшь (ну тут хз)</p>
     </div>
 
     <div class="card" style="width: 250px;">
       <h2>tvo1_roma</h2>
-      <p>Тихий, но видит всё(иногда дохуя громкий)</p>
+      <p>Тихий, но видит всё (иногда дохуя громкий)</p>
     </div>
   </div>
 </body>
 </html>
+
