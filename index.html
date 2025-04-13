@@ -7,9 +7,11 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      padding: 2rem;
       background-color: #121212;
       color: #f0f0f0;
       margin: 0;
+      height: 100%;
       transition: opacity 1s ease-in;
     }
 
@@ -38,11 +40,11 @@
       color: #bbb;
     }
 
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px 20px;
+    header img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-top: 10px;
+      border: 4px solid #fff;
     }
 
     .card {
@@ -50,8 +52,8 @@
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      max-width: 400px;
-      margin: 20px 0;
+      max-width: 600px;
+      margin: 20px auto;
       text-align: center;
       color: #ccc;
     }
@@ -79,21 +81,6 @@
       text-decoration: underline;
     }
 
-    .image-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-  flex-wrap: nowrap;
-}
-
-.image-row img {
-  width: 200px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
     .moders-container {
       display: flex;
       justify-content: center;
@@ -102,8 +89,24 @@
       flex-wrap: wrap;
     }
 
-    .moders-container .card {
-      width: 250px;
+    .moders-container img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .image-row img {
+      width: 200px;
+      border-radius: 12px;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -111,30 +114,28 @@
   <header>
     <h1>ech0noway</h1>
     <p>(главный мопс на планете)</p>
-    <p>Всем привет, тут будет вся информация про ech0noway и его модеров</p>
+    <p>Всем привет тут будет вся информация про ech0noway и его модеров</p>
   </header>
 
-<div class="card">
-  <h2>ech0noway</h2>
-  <p>БРАТ СКАЯ?:)</p>
-  <div class="image-row">
-    <img src="photo1.jpg" alt="sky">
-    <img src="ech010.jpg" alt="ech0">
+  <div class="card">
+    <h2>ech0noway</h2>
+    <p>БРАТ СКАЯ?:)</p>
+    <div class="image-row">
+      <img src="photo1.jpg" alt="sky">
+      <img src="ech010.jpg" alt="ech0">
+    </div>
+    <a href="https://twitch.tv/ech0noway">Перейти на канал</a>
   </div>
-  <a href="https://twitch.tv/ech0noway">Перейти на канал</a>
-</div>
 
+  <div class="moders-container">
+    <div class="card" style="width: 250px;">
+      <h2>d3stroyeed</h2>
+      <p>Банит быстрее, чем ты моргнёшь(ну тут хз)</p>
+    </div>
 
-    <div class="moders-container">
-      <div class="card">
-        <h2>d3stroyeed</h2>
-        <p>Банит быстрее, чем ты моргнёшь (ну тут хз)</p>
-      </div>
-
-      <div class="card">
-        <h2>tvo1_roma</h2>
-        <p>Тихий, но видит всё (иногда дохуя громкий)</p>
-      </div>
+    <div class="card" style="width: 250px;">
+      <h2>tvo1_roma</h2>
+      <p>Тихий, но видит всё(иногда дохуя громкий)</p>
     </div>
   </div>
 </body>
