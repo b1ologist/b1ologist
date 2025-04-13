@@ -50,7 +50,6 @@
       height: auto;
       border-radius: 10px;
       transition: transform 0.3s ease, filter 0.3s ease;
-      image-rendering: auto;
       cursor: pointer;
     }
 
@@ -63,7 +62,7 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 1;
+      z-index: 100;
       left: 0;
       top: 0;
       width: 100%;
@@ -89,10 +88,14 @@
       cursor: pointer;
     }
 
+    iframe {
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Блок с первой встречей -->
   <div class="card">
     <h1>ech0noway</h1>
     <p>первая встреча ech0noway и skywhywalkera</p>
@@ -103,6 +106,7 @@
     </div>
   </div>
 
+  <!-- Факты + фотки -->
   <div class="card">
     <h2>Несколько фактов про ech0noway</h2>
     <ul style="text-align: left; max-width: 600px; margin: 0 auto; font-size: 1rem; color: #ccc;">
@@ -121,24 +125,60 @@
     </div>
   </div>
 
+  <!-- Клип-карточка слева -->
+  <div class="card" style="align-self: flex-start;">
+    <h2>Клипы (неделя)</h2>
+    <div class="image-gallery">
+      <img src="https://clips-media-assets2.twitch.tv/8BkTH8GKAzi4CFF4-preview-480x272.jpg" alt="clip1"
+           onclick="openModalVideo('https://clips.twitch.tv/embed?clip=CallousTangibleLapwingKappa-8BkTH8GKAzi4CFF4&parent=localhost')">
+      <img src="https://clips-media-assets2.twitch.tv/Bxxfvhpklyh-ZlgW-preview-480x272.jpg" alt="clip2"
+           onclick="openModalVideo('https://clips.twitch.tv/embed?clip=LitigiousCrowdedGrassBrainSlug-Bxxfvhpklyh-ZlgW&parent=localhost')">
+    </div>
+  </div>
+
+  <!-- Клип-карточка справа -->
+  <div class="card" style="align-self: flex-end;">
+    <h2>Клипы (месяц / всё время)</h2>
+    <div class="image-gallery">
+      <img src="https://clips-media-assets2.twitch.tv/-VJ-dqvON4LUDOy2-preview-480x272.jpg" alt="clip3"
+           onclick="openModalVideo('https://clips.twitch.tv/embed?clip=EncouragingSnappyChowderEagleEye--VJ-dqvON4LUDOy2&parent=localhost')">
+      <img src="https://clips-media-assets2.twitch.tv/3OUg-55wFO8ck66w-preview-480x272.jpg" alt="clip4"
+           onclick="openModalVideo('https://clips.twitch.tv/embed?clip=AlluringDeterminedLapwingKippa-3OUg-55wFO8ck66w&parent=localhost')">
+    </div>
+  </div>
+
   <!-- Модальное окно -->
   <div id="modal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImage">
+    <img class="modal-content" id="modalImage" style="display: none;">
+    <iframe id="modalVideo" style="display: none; width: 90vw; height: 80vh;" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <script>
-    // Открыть модальное окно с изображением
     function openModal(imageSrc) {
       const modal = document.getElementById('modal');
       const modalImage = document.getElementById('modalImage');
+      const modalVideo = document.getElementById('modalVideo');
       modal.style.display = "flex";
+      modalImage.style.display = "block";
+      modalVideo.style.display = "none";
       modalImage.src = imageSrc;
     }
 
-    // Закрыть модальное окно
+    function openModalVideo(videoSrc) {
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modalImage');
+      const modalVideo = document.getElementById('modalVideo');
+      modal.style.display = "flex";
+      modalImage.style.display = "none";
+      modalVideo.style.display = "block";
+      modalVideo.src = videoSrc;
+    }
+
     function closeModal() {
       const modal = document.getElementById('modal');
+      document.getElementById('modalImage').src = '';
+      document.getElementById('modalVideo').src = '';
       modal.style.display = "none";
     }
   </script>
