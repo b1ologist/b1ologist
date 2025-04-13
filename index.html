@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -11,29 +10,67 @@
       padding: 2rem;
       background-color: #f0f0f0;
       color: #333;
+      opacity: 0;
+      transition: opacity 1s ease-in;
     }
+
+    body.loaded {
+      opacity: 1;
+    }
+
     header {
       text-align: center;
       margin-bottom: 2rem;
     }
+
+    header img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+
     .card {
-      background: white;
+      background: #fff;
       padding: 1.5rem;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       max-width: 600px;
-      margin: auto;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #4CAF50;
+    }
+
+    .card p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
-<body>
+<body class="loaded">
   <header>
     <h1>ech0noway</h1>
+    <img src="path-to-your-image.jpg" alt="Эхо Ноуэй">
     <p>Всем привет тут будет вся информация про ech0noway и его модеров</p>
   </header>
   <div class="card">
     <h2>ech0noway</h2>
-    <p> БРАТ СКАЯ?:)</p>
+    <p>БРАТ СКАЯ?:)</p>
+    <a href="https://twitch.tv/ech0noway">Перейти на канал</a>
   </div>
 </body>
 </html>
