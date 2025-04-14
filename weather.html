@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Динамический фон по погоде</title>
+  <title>Текущая Погода и Мопсы!</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,50 +11,79 @@
       padding: 0;
       height: 100vh;
       transition: background-color 1s ease, background-image 1s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
     }
 
-    /* Светлый фон для ясной погоды */
+    /* Фоны */
     body.sunny {
       background-color: #ffcc99;
-      background-image: url('sunny-background.jpg'); /* Замените на свою картинку */
-      color: #000;
+      background-image: url('https://www.w3schools.com/w3images/sunny.jpg'); /* Замените на свою картинку */
     }
 
-    /* Тёмный фон для дождливой погоды */
     body.rainy {
       background-color: #a3a3a3;
-      background-image: url('rainy-background.jpg'); /* Замените на картинку с дождем */
-      color: #fff;
+      background-image: url('https://www.w3schools.com/w3images/rainy.jpg'); /* Замените на картинку с дождем */
     }
 
-    /* Облачный фон */
     body.cloudy {
       background-color: #808080;
-      background-image: url('cloudy-background.jpg'); /* Замените на картинку с облаками */
-      color: #fff;
+      background-image: url('https://www.w3schools.com/w3images/cloudy.jpg'); /* Замените на картинку с облаками */
     }
 
-    h1 {
+    h1, h2 {
       text-align: center;
-      margin-top: 20%;
-      font-size: 3rem;
+      margin: 20px;
+    }
+
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .mop-image {
+      width: 100px;
+      margin-top: 20px;
+      animation: mopRun 1s infinite;
+    }
+
+    @keyframes mopRun {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(100px); }
+      100% { transform: translateX(0); }
     }
   </style>
 </head>
 <body>
-  <h1>Погода в Москве</h1>
+  <h1>Мопсы и Погода в Москве</h1>
+  <h2>Погода в Москве</h2>
 
+  <!-- Счетчик мопсов -->
+  <div class="counter">
+    <p>Мопсов поймано: <span id="mopCount">0</span></p>
+  </div>
+
+  <!-- Мопс -->
+  <img src="https://img.icons8.com/?size=100&id=61393&format=png&color=000000" alt="Мопс" class="mop-image" id="mopImage">
+
+  <!-- Ссылка на сайт -->
+  <p><a href="https://twitch.tv/ech0noway" target="_blank" style="color: #00aaff;">Перейти на канал Twitch</a></p>
+
+  <!-- Функция для получения погоды и изменения фона -->
   <script>
-    // Ваш API ключ OpenWeather
     const apiKey = 'YOUR_API_KEY'; // Замените на свой ключ
-    const city = 'Moscow'; // Город, для которого получаем данные (Москва)
+    const city = 'Moscow'; // Город
 
     // Функция для получения погоды и изменения фона
     function updateWeatherBackground() {
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ru`)
         .then(response => response.json())
         .then(data => {
-          const weather = data.weather[0].main.toLowerCase(); // Получаем основной тип погоды
+          const weather = data.weather[0].main.toLowerCase(); // Получаем тип погоды
           const body = document.body;
 
           // Убираем старые классы
@@ -74,6 +103,17 @@
 
     // Вызываем функцию при загрузке страницы
     window.onload = updateWeatherBackground;
+
+    // Счетчик мопсов
+    let mopCount = 0;
+    const mopCountElement = document.getElementById('mopCount');
+    const mopImage = document.getElementById('mopImage');
+
+    // Ловим мопсов (клик по мопсу)
+    mopImage.addEventListener('click', () => {
+      mopCount += 1;
+      mopCountElement.innerText = mopCount;
+    });
   </script>
 </body>
 </html>
