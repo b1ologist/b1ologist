@@ -239,6 +239,13 @@
 
   <button id="theme-toggle" class="hover-animate">Сменить тему</button>
 
+  <!-- Добавим селект для выбора шрифта -->
+  <select id="font-selector" style="margin-top: 20px; padding: 10px;">
+    <option value="default">Выберите шрифт</option>
+    <option value="custom">Курсив</option>
+    <option value="custom2">Георгия</option>
+  </select>
+
   <script>
     // Проверка, если пользователь выбрал тему ранее
     if(localStorage.getItem('theme') === 'dark') {
@@ -247,6 +254,13 @@
     } else {
       document.body.classList.add('light-mode');
       document.body.classList.remove('dark-mode');
+    }
+
+    // Проверка выбранного шрифта
+    if(localStorage.getItem('font') === 'custom') {
+      document.body.classList.add('custom-font');
+    } else if(localStorage.getItem('font') === 'custom2') {
+      document.body.classList.add('custom-font2');
     }
 
     // Обработчик для кнопки смены темы
@@ -260,6 +274,21 @@
       } else {
         localStorage.setItem('theme', 'light');
       }
+    });
+
+    // Обработчик для выбора шрифта
+    document.getElementById('font-selector').addEventListener('change', function() {
+      const font = this.value;
+      document.body.classList.remove('custom-font', 'custom-font2');
+
+      if (font === 'custom') {
+        document.body.classList.add('custom-font');
+      } else if (font === 'custom2') {
+        document.body.classList.add('custom-font2');
+      }
+
+      // Сохранение выбранного шрифта в localStorage
+      localStorage.setItem('font', font);
     });
   </script>
 </body>
