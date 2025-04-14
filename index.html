@@ -249,6 +249,14 @@
     }, 10000);
   }
 </script>
+<script>
+  const barkSound = new Audio("https://www.soundjay.com/animal/dog-barking-1.mp3");
+
+  document.addEventListener("click", () => {
+    barkSound.currentTime = 0; // сбрасываем на начало
+    barkSound.play();
+  });
+</script>
 
 </body>
 </html>
