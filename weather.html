@@ -3,117 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Текущая Погода и Мопсы!</title>
+  <title>Мини сайт с приколами</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      transition: background-color 1s ease, background-image 1s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      background-color: #1a1a1a;
       color: #fff;
-    }
-
-    /* Фоны */
-    body.sunny {
-      background-color: #ffcc99;
-      background-image: url('https://www.w3schools.com/w3images/sunny.jpg'); /* Замените на свою картинку */
-    }
-
-    body.rainy {
-      background-color: #a3a3a3;
-      background-image: url('https://www.w3schools.com/w3images/rainy.jpg'); /* Замените на картинку с дождем */
-    }
-
-    body.cloudy {
-      background-color: #808080;
-      background-image: url('https://www.w3schools.com/w3images/cloudy.jpg'); /* Замените на картинку с облаками */
-    }
-
-    h1, h2 {
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      margin: 20px;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      animation: fadeIn 2s ease-out;
+    }
+
+    p {
+      font-size: 1.5rem;
+      animation: fadeIn 2s ease-out 0.5s;
+    }
+
+    .button {
+      background-color: #ff6347;
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #ff4500;
+    }
+
+    .image-container {
+      margin-top: 30px;
+    }
+
+    .hidden-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .hidden-image.visible {
+      opacity: 1;
     }
 
     .counter {
       font-size: 2rem;
-      font-weight: bold;
-      margin-top: 10px;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-out 1s;
     }
 
-    .mop-image {
-      width: 100px;
-      margin-top: 20px;
-      animation: mopRun 1s infinite;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    @keyframes mopRun {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(100px); }
-      100% { transform: translateX(0); }
+    .congratulations {
+      margin-top: 50px;
+      font-size: 2rem;
+      color: #00ff00;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Мопсы и Погода в Москве</h1>
-  <h2>Погода в Москве</h2>
 
-  <!-- Счетчик мопсов -->
-  <div class="counter">
-    <p>Мопсов поймано: <span id="mopCount">0</span></p>
+  <h1>Добро пожаловать на сайт с приколами!</h1>
+  <p>Здесь можно получить неожиданности, посмотреть картинки и немного повеселиться.</p>
+
+  <button class="button" onclick="showImage()">Покажите мне картинку!</button>
+
+  <div class="image-container">
+    <img id="randomImage" src="https://i.pinimg.com/originals/f1/4d/ee/f14dee3f7355c1dfd1b6078de8b2332c.jpg" alt="Мопс" class="hidden-image">
   </div>
 
-  <!-- Мопс -->
-  <img src="https://img.icons8.com/?size=100&id=61393&format=png&color=000000" alt="Мопс" class="mop-image" id="mopImage">
+  <div class="counter">
+    <p>Число кликов: <span id="clickCount">0</span></p>
+    <button class="button" onclick="increaseCount()">Увеличить счетчик</button>
+  </div>
 
-  <!-- Ссылка на сайт -->
-  <p><a href="https://twitch.tv/ech0noway" target="_blank" style="color: #00aaff;">Перейти на канал Twitch</a></p>
+  <div class="congratulations">
+    <p>Поздравляю, ты нашел секрет! 🎉</p>
+  </div>
 
-  <!-- Функция для получения погоды и изменения фона -->
   <script>
-    const apiKey = 'YOUR_API_KEY'; // Замените на свой ключ
-    const city = 'Moscow'; // Город
+    let count = 0;
 
-    // Функция для получения погоды и изменения фона
-    function updateWeatherBackground() {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ru`)
-        .then(response => response.json())
-        .then(data => {
-          const weather = data.weather[0].main.toLowerCase(); // Получаем тип погоды
-          const body = document.body;
-
-          // Убираем старые классы
-          body.classList.remove('rainy', 'sunny', 'cloudy');
-
-          // В зависимости от погоды меняем фон
-          if (weather.includes('rain')) {
-            body.classList.add('rainy');
-          } else if (weather.includes('clear')) {
-            body.classList.add('sunny');
-          } else {
-            body.classList.add('cloudy');
-          }
-        })
-        .catch(error => console.error('Ошибка при получении погоды:', error));
+    function showImage() {
+      const image = document.getElementById("randomImage");
+      image.classList.toggle("visible");
     }
 
-    // Вызываем функцию при загрузке страницы
-    window.onload = updateWeatherBackground;
+    function increaseCount() {
+      count++;
+      document.getElementById("clickCount").innerText = count;
 
-    // Счетчик мопсов
-    let mopCount = 0;
-    const mopCountElement = document.getElementById('mopCount');
-    const mopImage = document.getElementById('mopImage');
-
-    // Ловим мопсов (клик по мопсу)
-    mopImage.addEventListener('click', () => {
-      mopCount += 1;
-      mopCountElement.innerText = mopCount;
-    });
+      // Показываем поздравление на 10 кликов
+      if (count === 10) {
+        document.querySelector(".congratulations").style.display = "block";
+      }
+    }
   </script>
+
 </body>
 </html>
+
