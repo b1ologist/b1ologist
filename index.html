@@ -157,12 +157,42 @@
     </div>
   </div>
 </body>
-<button onclick="startGame()">Начать игру!</button>
+<button onclick="startGame()" style="position: fixed; top: 20px; left: 20px; z-index: 1000;">Выпустить мопсов 🐶</button>
+
 <script>
   function startGame() {
-    alert("Играй, кликай по мопсам! 🐾");
-    // Добавь здесь логику для игры!
+    for (let i = 0; i < 10; i++) {
+      setTimeout(spawnPug, i * 500); // Появляются с задержкой
+    }
+  }
+
+  function spawnPug() {
+    const pug = document.createElement('div');
+    pug.textContent = '🐶';
+    pug.style.position = 'absolute';
+    pug.style.fontSize = '3rem';
+    pug.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+    pug.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+    pug.style.cursor = 'pointer';
+    pug.style.transition = 'transform 0.2s ease, opacity 0.3s ease';
+    pug.style.userSelect = 'none';
+
+    pug.onclick = function () {
+      pug.style.transform = 'scale(1.5)';
+      pug.style.opacity = '0';
+      setTimeout(() => pug.remove(), 300);
+    };
+
+    document.body.appendChild(pug);
+
+    // Автоудаление через 5 секунд
+    setTimeout(() => {
+      if (pug.parentElement) {
+        pug.remove();
+      }
+    }, 5000);
   }
 </script>
+
 
 </html>
