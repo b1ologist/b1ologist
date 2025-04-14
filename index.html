@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <link rel="icon" type="image/png" href="favicon-32x32.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="favicon-32x32.png">
   <title>twitch.tv/ech0noway</title>
   <style>
+    /* Темная и светлая темы */
+    body.light-mode {
+      background-color: #fff;
+      color: #333;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+    /* Общие стили */
     @keyframes fadeInUp {
       0% {
         opacity: 0;
@@ -17,15 +29,9 @@
       }
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       font-family: Arial, sans-serif;
       padding: 2rem;
-      background-color: #121212;
-      color: #f0f0f0;
       margin: 0;
       height: 100%;
       transition: opacity 1s ease-in;
@@ -45,20 +51,19 @@
     }
 
     header h1 {
-      font-size: 2.5rem;
-      color: #fff;
+      font-size: 3rem;
       margin-bottom: 10px;
     }
 
     header p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin-top: 0;
       font-style: italic;
       color: #bbb;
     }
 
     header img {
-      max-width: 100px;
+      max-width: 150px;
       border-radius: 50%;
       margin-top: 10px;
       border: 4px solid #fff;
@@ -66,26 +71,22 @@
 
     .card {
       background: rgba(255, 255, 255, 0.1);
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      width: 100%;
       max-width: 600px;
       margin: 20px auto;
       text-align: center;
-      color: #ccc;
       animation: fadeInUp 1.2s ease forwards;
     }
 
     .card h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
-      color: #fff;
     }
 
     .card p {
-      font-size: 1rem;
-      color: #aaa;
+      font-size: 1.2rem;
     }
 
     a {
@@ -109,9 +110,10 @@
       animation: fadeInUp 1.4s ease forwards;
     }
 
-    .moders-container .card {
-      flex: 1 1 250px;
-      margin: 10px;
+    .moders-container img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
     }
 
     .mod-link {
@@ -125,36 +127,22 @@
       color: #88ccff;
     }
 
-    .image-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    .image-row img {
-      width: 100%;
-      max-width: 200px;
-      border-radius: 12px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .card h2 {
-        font-size: 1.3rem;
-      }
-
-      .card p, header p {
-        font-size: 0.95rem;
-      }
+    button:hover {
+      background-color: #555;
     }
   </style>
 </head>
-<body class="loaded">
+<body class="loaded light-mode">
   <header>
     <h1>ech0noway</h1>
     <p>(главный мопс на планете)</p>
@@ -164,9 +152,9 @@
   <div class="card">
     <h2>ech0noway</h2>
     <p>БРАТ СКАЯ?:)</p>
-    <div class="image-row">
-      <img src="photo1.jpg" alt="sky">
-      <img src="ech010.jpg" alt="ech0">
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+      <img src="photo1.jpg" alt="sky" style="width: 200px; border-radius: 12px;">
+      <img src="ech010.jpg" alt="ech0" style="width: 200px; border-radius: 12px;">
     </div>
     <div style="margin-top: 20px;">
       <a href="https://twitch.tv/ech0noway" target="_blank" style="margin-right: 15px;">Перейти на канал</a>
@@ -175,92 +163,43 @@
   </div>
 
   <div class="moders-container">
-    <div class="card">
+    <div class="card" style="width: 250px;">
       <h2>d3stroyeed</h2>
       <p>Банит быстрее, чем ты моргнёшь (ну тут хз)</p>
       <a class="mod-link" href="https://b1ologist.github.io/d3stroyeed/" target="_blank">Перейти</a>
     </div>
 
-    <div class="card">
+    <div class="card" style="width: 250px;">
       <h2>tvo1_roma</h2>
       <p>Тихий, но видит всё (иногда дохуя громкий)</p>
       <a class="mod-link" href="https://b1ologist.github.io/tvo1_roma/" target="_blank">Перейти</a>
     </div>
   </div>
 
-  <div id="pug-counter" style="position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); color: #fff; padding: 10px 15px; border-radius: 10px; font-size: 18px; font-weight: bold; z-index: 1000;">
-    Поймано мопсов: 0
-  </div>
-
-  <button onclick="startGame()" style="position: fixed; top: 20px; left: 20px; z-index: 1000; padding: 10px 15px; background-color: #333; color: #fff; border: none; border-radius: 10px; cursor: pointer;">
-    Выпустить мопсов 🐶
-  </button>
+  <button id="theme-toggle">Сменить тему</button>
 
   <script>
-    const pugImageUrl = "https://img.icons8.com/?size=100&id=61393&format=png&color=000000";
-    const barkSound = new Audio("https://www.soundjay.com/animal/dog-barking-1.mp3");
+    // Проверка, если пользователь выбрал тему ранее
+    if(localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+    }
 
-    let caught = 0;
-    let gameActive = false;
+    // Обработчик для кнопки смены темы
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
 
-    function startGame() {
-      if (gameActive) return;
-      gameActive = true;
-      caught = 0;
-      updateCounter();
-
-      for (let i = 0; i < 10; i++) {
-        setTimeout(spawnPug, i * 500);
+      // Сохранение выбранной темы в localStorage
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
       }
-
-      setTimeout(() => {
-        gameActive = false;
-      }, 10000);
-    }
-
-    function updateCounter() {
-      document.getElementById("pug-counter").textContent = "Поймано мопсов: " + caught;
-    }
-
-    function spawnPug() {
-      const pug = document.createElement('img');
-      pug.src = pugImageUrl;
-      pug.style.position = 'absolute';
-      pug.style.width = '60px';
-      pug.style.height = '60px';
-      pug.style.left = Math.random() * (window.innerWidth - 60) + 'px';
-      pug.style.top = Math.random() * (window.innerHeight - 60) + 'px';
-      pug.style.transition = 'transform 0.2s ease, left 1s ease, top 1s ease';
-      pug.style.cursor = 'pointer';
-      pug.style.userSelect = 'none';
-      pug.style.zIndex = '999';
-
-      document.body.appendChild(pug);
-
-      const moveInterval = setInterval(() => {
-        if (!document.body.contains(pug)) {
-          clearInterval(moveInterval);
-          return;
-        }
-        pug.style.left = Math.random() * (window.innerWidth - 60) + 'px';
-        pug.style.top = Math.random() * (window.innerHeight - 60) + 'px';
-      }, 800);
-
-      pug.onclick = function () {
-        caught++;
-        updateCounter();
-        barkSound.currentTime = 0;
-        barkSound.play();
-        pug.style.transform = 'scale(1.3)';
-        pug.style.opacity = '0';
-        setTimeout(() => pug.remove(), 200);
-      };
-
-      setTimeout(() => {
-        if (pug.parentElement) pug.remove();
-      }, 10000);
-    }
+    });
   </script>
 </body>
 </html>
-
