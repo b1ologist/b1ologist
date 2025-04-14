@@ -2,123 +2,99 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мини сайт с приколами</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ech0noway — фишки</title>
   <style>
     body {
-      background-color: #1a1a1a;
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e1e1e;
       color: #fff;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding: 50px;
     }
 
     h1 {
-      font-size: 3rem;
-      animation: fadeIn 2s ease-out;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
     }
 
-    p {
-      font-size: 1.5rem;
-      animation: fadeIn 2s ease-out 0.5s;
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #2a2a2a;
+      border-radius: 15px;
+      padding: 1.5rem;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .emoji {
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
 
     .button {
-      background-color: #ff6347;
+      margin-top: 15px;
+      background: #00aaff;
       color: #fff;
-      font-size: 1.2rem;
-      padding: 10px 20px;
+      padding: 0.5rem 1rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 20px;
-      transition: background-color 0.3s;
+      font-size: 1rem;
     }
 
     .button:hover {
-      background-color: #ff4500;
-    }
-
-    .image-container {
-      margin-top: 30px;
-    }
-
-    .hidden-image {
-      width: 200px;
-      height: 200px;
-      border-radius: 10px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .hidden-image.visible {
-      opacity: 1;
-    }
-
-    .counter {
-      font-size: 2rem;
-      margin-top: 30px;
-      animation: fadeIn 2s ease-out 1s;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .congratulations {
-      margin-top: 50px;
-      font-size: 2rem;
-      color: #00ff00;
-      display: none;
+      background: #0090dd;
     }
   </style>
 </head>
 <body>
+  <h1>Приколы от ech0noway</h1>
 
-  <h1>Добро пожаловать на сайт с приколами!</h1>
-  <p>Здесь можно получить неожиданности, посмотреть картинки и немного повеселиться.</p>
+  <div class="card-container">
+    <div class="card">
+      <div class="emoji">🔥</div>
+      <h3>Факт о стримере</h3>
+      <p>ech0noway однажды проиграл в кс, но наорал так, что сервер завис.</p>
+    </div>
 
-  <button class="button" onclick="showImage()">Покажите мне картинку!</button>
+    <div class="card">
+      <div class="emoji">🎉</div>
+      <h3>Мем дня</h3>
+      <p>Когда модер банит быстрее, чем ты успел сказать "здарова".</p>
+    </div>
 
-  <div class="image-container">
-    <img id="randomImage" src="https://i.pinimg.com/originals/f1/4d/ee/f14dee3f7355c1dfd1b6078de8b2332c.jpg" alt="Мопс" class="hidden-image">
+    <div class="card">
+      <div class="emoji">📷</div>
+      <h3>Рандомная фотка</h3>
+      <img src="https://placekitten.com/200/200" alt="котик" style="border-radius: 10px; margin-top: 10px;">
+    </div>
+
+    <div class="card">
+      <div class="emoji">🧠</div>
+      <h3>Мудрость дня</h3>
+      <p>Если в чате тихо — значит модер уже рядом.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎲</div>
+      <h3>Мне повезёт</h3>
+      <button class="button" onclick="alert('Ты сегодня красавчик!')">Кликни</button>
+    </div>
   </div>
-
-  <div class="counter">
-    <p>Число кликов: <span id="clickCount">0</span></p>
-    <button class="button" onclick="increaseCount()">Увеличить счетчик</button>
-  </div>
-
-  <div class="congratulations">
-    <p>Поздравляю, ты нашел секрет! 🎉</p>
-  </div>
-
-  <script>
-    let count = 0;
-
-    function showImage() {
-      const image = document.getElementById("randomImage");
-      image.classList.toggle("visible");
-    }
-
-    function increaseCount() {
-      count++;
-      document.getElementById("clickCount").innerText = count;
-
-      // Показываем поздравление на 10 кликов
-      if (count === 10) {
-        document.querySelector(".congratulations").style.display = "block";
-      }
-    }
-  </script>
-
 </body>
 </html>
 
