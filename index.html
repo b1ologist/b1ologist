@@ -185,12 +185,6 @@
 ">Выпустить мопсов 🐶</button>
 
 <script>
-  const barkSound = new Audio("https://www.soundjay.com/animal/dog-barking-1.mp3");
-
-  document.addEventListener("click", () => {
-    barkSound.currentTime = 0; // сбрасываем на начало
-    barkSound.play();
-  });
   let caught = 0;
   let gameActive = false;
 
@@ -251,6 +245,15 @@
       if (pug.parentElement) pug.remove();
     }, 10000);
   }
+<script>
+  const barkSound = new Audio("https://www.soundjay.com/animal/dog-barking-1.mp3");
+
+  document.addEventListener("click", () => {
+    barkSound.currentTime = 0; // сбрасываем на начало
+    barkSound.play();
+  });
+</script>
+
 </script>
 </body>
 </html>
