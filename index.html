@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>twitch.tv/ech0noway</title>
   <style>
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     body {
       font-family: Arial, sans-serif;
       padding: 2rem;
@@ -12,7 +23,11 @@
       color: #f0f0f0;
       margin: 0;
       height: 100%;
-      overflow: hidden;
+      transition: opacity 1s ease-in;
+    }
+
+    body.loaded {
+      opacity: 1;
     }
 
     header {
@@ -21,98 +36,125 @@
       background-color: rgba(0, 0, 0, 0.8);
       border-radius: 15px;
       padding: 20px;
+      animation: fadeInUp 1s ease forwards;
     }
 
     header h1 {
       font-size: 3rem;
       color: #fff;
+      margin-bottom: 10px;
     }
 
     header p {
       font-size: 1.2rem;
-      color: #bbb;
+      margin-top: 0;
       font-style: italic;
+      color: #bbb;
     }
 
-    .counter {
+    header img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-top: 10px;
+      border: 4px solid #fff;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      margin: 20px auto;
       text-align: center;
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      color: #00ffcc;
+      color: #ccc;
+      animation: fadeInUp 1.2s ease forwards;
     }
 
-    .pug {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      pointer-events: auto;
-      cursor: pointer;
-      transition: transform 0.2s;
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #fff;
     }
 
-    .pug:active {
-      transform: scale(0.85);
+    .card p {
+      font-size: 1.2rem;
+      color: #aaa;
     }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: #ccc;
+      text-decoration: underline;
+    }
+
+    .moders-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      animation: fadeInUp 1.4s ease forwards;
+    }
+
+    .moders-container img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .mod-link {
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 0.95rem;
+      color: #00aaff;
+    }
+
+    .mod-link:hover {
+      color: #88ccff;
+    }
+
   </style>
 </head>
-<body>
+<body class="loaded">
   <header>
     <h1>ech0noway</h1>
     <p>(главный мопс на планете)</p>
-    <p>Лови мопсов и удиви стримера 🐶</p>
-    <div class="counter">Поймано мопсов: <span id="pug-count">0</span></div>
+    <p>Всем привет тут будет вся информация про ech0noway и его модеров</p>
   </header>
 
-  <!-- Аудио -->
-  <audio id="bark-sound" src="https://www.soundjay.com/animal/dog-barking-1.mp3" preload="auto"></audio>
+ <div class="card">
+  <h2>ech0noway</h2>
+  <p>БРАТ СКАЯ?:)</p>
+  <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+    <img src="photo1.jpg" alt="sky" style="width: 200px; border-radius: 12px;">
+    <img src="ech010.jpg" alt="ech0" style="width: 200px; border-radius: 12px;">
+  </div>
+  <div style="margin-top: 20px;">
+    <a href="https://twitch.tv/ech0noway" target="_blank" style="margin-right: 15px;">Перейти на канал</a>
+    <a href="ech0_sky.html" target="_blank" style="color: #00aaff;">Перейти</a>
+  </div>
+</div>
 
-  <script>
-    let pugCount = 0;
 
-    function spawnPug() {
-      const pug = document.createElement("img");
-      pug.src = "https://img.icons8.com/?size=100&id=61393&format=png&color=000000";
-      pug.classList.add("pug");
+  <div class="moders-container">
+    <div class="card" style="width: 250px;">
+      <h2>d3stroyeed</h2>
+      <p>Банит быстрее, чем ты моргнёшь (ну тут хз)</p>
+      <a class="mod-link" href="https://b1ologist.github.io/d3stroyeed/" target="_blank">Перейти</a>
+    </div>
 
-      // Случайная вертикальная позиция
-      const top = Math.random() * (window.innerHeight - 60);
-      pug.style.top = `${top}px`;
-      pug.style.left = `-80px`;
-
-      // Добавление в тело
-      document.body.appendChild(pug);
-
-      // Анимация движения мопса
-      const duration = 5 + Math.random() * 3;
-      pug.style.transition = `left ${duration}s linear`;
-      setTimeout(() => {
-        pug.style.left = `${window.innerWidth + 100}px`;
-      }, 50);
-
-      // Клик по мопсу
-      pug.addEventListener("click", () => {
-        const bark = document.getElementById("bark-sound");
-        bark.currentTime = 0;
-        bark.play();
-
-        pug.remove();
-        pugCount++;
-        document.getElementById("pug-count").textContent = pugCount;
-      });
-
-      // Удаление после выхода за экран
-      setTimeout(() => {
-        if (document.body.contains(pug)) {
-          pug.remove();
-        }
-      }, (duration + 1) * 1000);
-    }
-
-    // Спавн мопса каждые 2-4 секунды
-    setInterval(() => {
-      spawnPug();
-    }, 2000 + Math.random() * 2000);
-  </script>
+    <div class="card" style="width: 250px;">
+      <h2>tvo1_roma</h2>
+      <p>Тихий, но видит всё (иногда дохуя громкий)</p>
+      <a class="mod-link" href="https://b1ologist.github.io/tvo1_roma/" target="_blank">Перейти</a>
+    </div>
+  </div>
 </body>
 </html>
-
