@@ -105,13 +105,6 @@
       text-align: center;
     }
 
-    .clip-text {
-      margin-top: 10px;
-      color: #bbb;
-      font-size: 1rem;
-      font-style: italic;
-    }
-
   </style>
 </head>
 <body>
@@ -152,10 +145,8 @@
       <div class="image-gallery">
         <img src="https://clips-media-assets2.twitch.tv/8BkTH8GKAzi4CFF4-preview-480x272.jpg" alt="clip1"
              onclick="openClipModal('CallousTangibleLapwingKappa-8BkTH8GKAzi4CFF4')">
-        <p class="clip-text">Звукорежиссёр!</p>
         <img src="https://clips-media-assets2.twitch.tv/Bxxfvhpklyh-ZlgW-preview-480x272.jpg" alt="clip2"
              onclick="openClipModal('LitigiousCrowdedGrassBrainSlug-Bxxfvhpklyh-ZlgW')">
-        <p class="clip-text">Не нажимается</p>
       </div>
     </div>
 
@@ -165,10 +156,8 @@
       <div class="image-gallery">
         <img src="https://clips-media-assets2.twitch.tv/-VJ-dqvON4LUDOy2-preview-480x272.jpg" alt="clip3"
              onclick="openClipModal('EncouragingSnappyChowderEagleEye--VJ-dqvON4LUDOy2')">
-        <p class="clip-text">Признался</p>
         <img src="https://clips-media-assets2.twitch.tv/3OUg-55wFO8ck66w-preview-480x272.jpg" alt="clip4"
              onclick="openClipModal('AlluringDeterminedLapwingKippa-3OUg-55wFO8ck66w')">
-        <p class="clip-text">Оценка ника от Ская </p>
       </div>
     </div>
   </div>
@@ -200,7 +189,7 @@
     function openClipModal(clipId) {
       const modal = document.getElementById('clipModal');
       const iframe = document.getElementById('clipFrame');
-      iframe.src = `https://clips.twitch.tv/embed?clip=${clipId}&parent=b1ologist.github.io`;
+      iframe.src = https://clips.twitch.tv/embed?clip=${clipId}&parent=b1ologist.github.io;
       modal.style.display = "flex";
     }
 
