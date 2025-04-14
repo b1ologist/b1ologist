@@ -185,9 +185,12 @@
 ">Выпустить мопсов 🐶</button>
 
 <script>
-  const pugImageUrl = "https://img.icons8.com/?size=100&id=61393&format=png&color=000000";
-  const barkSound = new Audio("https://www.fesliyanstudios.com/play-mp3/6967"); // гав!
+  const barkSound = new Audio("https://www.soundjay.com/animal/dog-barking-1.mp3");
 
+  document.addEventListener("click", () => {
+    barkSound.currentTime = 0; // сбрасываем на начало
+    barkSound.play();
+  });
   let caught = 0;
   let gameActive = false;
 
