@@ -263,5 +263,58 @@
     });
   </script>
 </body>
+<div id="clock">
+  <div id="hours"></div>
+  <div id="minutes"></div>
+  <div id="seconds"></div>
+</div>
+
+<style>
+  #clock {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 5px solid #000;
+    border-radius: 50%;
+  }
+  #hours, #minutes, #seconds {
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: #333;
+    top: 50%;
+    left: 50%;
+    transform-origin: 100%;
+  }
+  #hours {
+    background-color: #333;
+  }
+  #minutes {
+    background-color: #666;
+  }
+  #seconds {
+    background-color: #999;
+  }
+</style>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    const hoursDegree = (hours % 12) * 30 + (minutes / 60) * 30;
+    const minutesDegree = minutes * 6;
+    const secondsDegree = seconds * 6;
+
+    document.getElementById('hours').style.transform = `rotate(${hoursDegree}deg)`;
+    document.getElementById('minutes').style.transform = `rotate(${minutesDegree}deg)`;
+    document.getElementById('seconds').style.transform = `rotate(${secondsDegree}deg)`;
+  }
+
+  setInterval(updateClock, 1000);
+</script>
+
 </html>
 
