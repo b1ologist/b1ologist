@@ -50,6 +50,20 @@
       animation: fadeInUp 1s ease forwards;
     }
 
+    /* Светлая тема */
+    body.light-mode header {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+    }
+
+    body.light-mode header h1 {
+      color: #333;
+    }
+
+    body.light-mode header p {
+      color: #555;
+    }
+
     header h1 {
       font-size: 3rem;
       margin-bottom: 10px;
@@ -146,11 +160,6 @@
     }
 
     /* Для светлой темы - стили для фона и текста */
-    body.light-mode header {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #333;
-    }
-
     body.light-mode .card {
       background: rgba(0, 0, 0, 0.1);
       color: #333;
